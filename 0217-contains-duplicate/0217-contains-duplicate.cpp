@@ -1,17 +1,24 @@
 /**
- * @file ContainsDuplicate.cpp
- * @author Nada
- * @brief Optimized solution using STL container properties for duplicate detection.
- * * Performance:
- * - Time: O(n) average
- * - Space: O(n)
+ * @file Contains Duplicate.cpp
+ * @brief Checks if any value appears at least twice in an array.
+ * * Strategy: Using unordered_set for O(1) average time complexity lookups.
  */
-
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        // Constructing a set from the vector range automatically handles duplicates.
-        // A smaller size indicates at least one element was a duplicate.
-        return unordered_set<int>(nums.begin(), nums.end()).size() < nums.size();
+        // Hash Set to store elements we have already encountered
+        unordered_set<int> seen;
+
+        for (int num : nums) {
+            // If the element is already in the set, we found a duplicate
+            if (seen.find(num) != seen.end()) {
+                return true;
+            }
+            // Otherwise, insert it into the set
+            seen.insert(num);
+        }
+
+        // No duplicates found after scanning the entire array
+        return false;
     }
 };
