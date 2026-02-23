@@ -1,41 +1,30 @@
-<h2><a href="https://leetcode.com/problems/3sum">15. 3Sum</a></h2><h3>Medium</h3><hr><p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>
+# Intuition
+Finding triplets that sum to zero can be computationally expensive $(O(n^3))$ if we use a brute-force approach. To optimize this, we can sort the array and transform the problem into a series of Two-Sum problems. By fixing one element and using two pointers (left and right), we can scan the rest of the array in linear time, resulting in a quadratic overall complexity.
 
-<p>Notice that the solution set must not contain duplicate triplets.</p>
+# Approach
+Sorting: We start by sorting the array. This is crucial for two reasons: it allows us to use the two-pointer technique and makes it easier to skip duplicate values.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Fixed Pointer (i): We iterate through the array. If the current element nums[i] is greater than zero, we break the loop because no three positive numbers can sum to zero.
 
-<pre>
-<strong>Input:</strong> nums = [-1,0,1,2,-1,-4]
-<strong>Output:</strong> [[-1,-1,2],[-1,0,1]]
-<strong>Explanation:</strong> 
-nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
-nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
-nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
-The distinct triplets are [-1,0,1] and [-1,-1,2].
-Notice that the order of the output and the order of the triplets does not matter.
-</pre>
+Skipping Duplicates: To ensure unique triplets, we skip any element that is identical to the one before it.
 
-<p><strong class="example">Example 2:</strong></p>
+Two-Pointer Scan:
 
-<pre>
-<strong>Input:</strong> nums = [0,1,1]
-<strong>Output:</strong> []
-<strong>Explanation:</strong> The only possible triplet does not sum up to 0.
-</pre>
+left pointer starts at i + 1.
 
-<p><strong class="example">Example 3:</strong></p>
+right pointer starts at the end of the array.
 
-<pre>
-<strong>Input:</strong> nums = [0,0,0]
-<strong>Output:</strong> [[0,0,0]]
-<strong>Explanation:</strong> The only possible triplet sums up to 0.
-</pre>
+If sum == 0, we've found a valid triplet. We then move both pointers, skipping any identical adjacent values to avoid duplicate triplets in the output.
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+If sum < 0, we move the left pointer forward to increase the sum.
 
-<ul>
-	<li><code>3 &lt;= nums.length &lt;= 3000</code></li>
-	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
-</ul>
+If sum > 0, we move the right pointer backward to decrease the sum.
+
+# Complexity
+- Time complexity:O(n^2)
+Sorting takes O(n \log n)
+The nested loops (one for loop and one while loop for pointers) result in O(n^2).Since O(n^2) dominates O(n \log n), the final complexity is quadratic.
+
+- Space complexity:O(1) or O(\log n)
+- Excluding the space required for the output list, we only use a constant amount of extra space for pointers. Some space is used internally by the sorting algorithm.
+
