@@ -13,6 +13,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0217-contains-duplicate](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0217-contains-duplicate) |
 | [1470-shuffle-the-array](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/1470-shuffle-the-array) |
 | [1929-concatenation-of-array](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/1929-concatenation-of-array) |
+| [3842-toggle-light-bulbs](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/3842-toggle-light-bulbs) |
 ## Two Pointers
 |  |
 | ------- |
@@ -28,12 +29,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0169-majority-element](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0169-majority-element) |
 | [0217-contains-duplicate](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0217-contains-duplicate) |
 | [0242-valid-anagram](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0242-valid-anagram) |
+| [3842-toggle-light-bulbs](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/3842-toggle-light-bulbs) |
 ## Hash Table
 |  |
 | ------- |
 | [0169-majority-element](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0169-majority-element) |
 | [0217-contains-duplicate](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0217-contains-duplicate) |
 | [0242-valid-anagram](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/0242-valid-anagram) |
+| [3842-toggle-light-bulbs](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/3842-toggle-light-bulbs) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -46,6 +49,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [1929-concatenation-of-array](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/1929-concatenation-of-array) |
+| [3842-toggle-light-bulbs](https://github.com/Nadaramadan1/Leetcode_problems/tree/master/3842-toggle-light-bulbs) |
 ## String
 |  |
 | ------- |
