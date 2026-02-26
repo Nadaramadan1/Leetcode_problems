@@ -1,16 +1,13 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- * int val;
- * ListNode *next;
- * ListNode() : val(0), next(nullptr) {}
- * ListNode(int x) : val(x), next(nullptr) {}
- * ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-
 class Solution {
 public:
+    // التريكاية رقم 1: تسريع القراءة والكتابة
+    struct FastIO {
+        FastIO() {
+            ios_base::sync_with_stdio(false);
+            cin.tie(NULL);
+        }
+    } fast_io;
+
     struct compare {
         bool operator()(ListNode* a, ListNode* b) {
             return a->val > b->val;
@@ -18,23 +15,28 @@ public:
     };
 
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+        // التريكاية رقم 2: التعامل مع الحالات الفارغة فوراً
+        if (lists.empty()) return nullptr;
+        if (lists.size() == 1) return lists[0];
+
         priority_queue<ListNode*, vector<ListNode*>, compare> pq;
-        for (auto list : lists) {
-            if (list) pq.push(list);
+
+        for (auto l : lists) {
+            if (l) pq.push(l);
         }
 
-        ListNode dummy(0); 
+        ListNode dummy(0);
         ListNode* tail = &dummy;
 
         while (!pq.empty()) {
-            ListNode* smallest = pq.top();
+            ListNode* node = pq.top();
             pq.pop();
 
-            tail->next = smallest;
+            tail->next = node;
             tail = tail->next;
-            
-            if (smallest->next) {
-                pq.push(smallest->next);
+
+            if (node->next) {
+                pq.push(node->next);
             }
         }
 
