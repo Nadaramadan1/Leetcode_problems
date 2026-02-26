@@ -1,45 +1,32 @@
 class Solution {
 public:
-    // التريكاية رقم 1: تسريع القراءة والكتابة
-    struct FastIO {
-        FastIO() {
-            ios_base::sync_with_stdio(false);
-            cin.tie(NULL);
+    // دالة دمج قائمتين فقط (سهلة وسريعة جداً)
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        if (!l1) return l2;
+        if (!l2) return l1;
+        
+        if (l1->val <= l2->val) {
+            l1->next = mergeTwoLists(l1->next, l2);
+            return l1;
+        } else {
+            l2->next = mergeTwoLists(l1, l2->next);
+            return l2;
         }
-    } fast_io;
-
-    struct compare {
-        bool operator()(ListNode* a, ListNode* b) {
-            return a->val > b->val;
-        }
-    };
+    }
 
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        // التريكاية رقم 2: التعامل مع الحالات الفارغة فوراً
         if (lists.empty()) return nullptr;
-        if (lists.size() == 1) return lists[0];
-
-        priority_queue<ListNode*, vector<ListNode*>, compare> pq;
-
-        for (auto l : lists) {
-            if (l) pq.push(l);
-        }
-
-        ListNode dummy(0);
-        ListNode* tail = &dummy;
-
-        while (!pq.empty()) {
-            ListNode* node = pq.top();
-            pq.pop();
-
-            tail->next = node;
-            tail = tail->next;
-
-            if (node->next) {
-                pq.push(node->next);
+        
+        int n = lists.size();
+        // بنقلل عدد القوائم للنص في كل مرة
+        while (n > 1) {
+            for (int i = 0; i < n / 2; i++) {
+                lists[i] = mergeTwoLists(lists[i], lists[n - 1 - i]);
             }
+            // بنحدث عدد القوائم المتبقية للدمج
+            n = (n + 1) / 2;
         }
-
-        return dummy.next;
+        
+        return lists[0];
     }
 };
